@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Analyze Full Debates | ClashJudge IO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --main-bg: #151922;
+      --card-bg: #252321;
+      --text-light: #FDFCFA;
+      --text-subtle: #E3DAC9;
+      --accent-blue: #6495ED;
+      --input-bg: #2e2e3a;
+      --input-border: #444654;
+      --button-bg: #3b6de0;
+      --button-hover-bg: #2e55b3;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--main-bg);
+      color: var(--text-light);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #1a1d26;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #2f3240;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img {
+      height: 40px;
+      width: auto;
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      color: var(--text-subtle);
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    nav a {
+      color: var(--text-light);
+      margin-left: 24px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent-blue);
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 60px 40px 80px 40px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .back-btn {
+      margin-top: 10px;
+      display: inline-block;
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+
+    h2.section-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 36px;
+      text-align: center;
+      color: var(--text-light);
+    }
+
+    .main p {
+      font-size: 1.3rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .step {
+      background-color: var(--card-bg);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .centered-steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .centered-steps .step {
+      flex: 1 1 300px;
+      max-width: 400px;
+    }
+
+    .step h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--text-light);
+    }
+
+    .step p {
+      font-size: 1.2rem;
+      color: var(--text-subtle);
+    }
+
+    .debate-types {
+      max-width: 700px;
+      margin: 0 auto 80px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .debate-types button {
+      background-color: var(--card-bg);
+      border: 2px solid var(--input-border);
+      color: var(--text-light);
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 16px 20px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: left;
+    }
+
+    .debate-types button:hover,
+    .debate-types button.active {
+      background-color: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: white;
+    }
+
+    .upload-section {
+      max-width: 900px;
+      margin: 0 auto;
+      display: none;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .upload-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .bp-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, auto);
+      gap: 30px;
+    }
+
+    .team-card {
+      background-color: var(--card-bg);
+      border-radius: 20px;
+      padding: 20px 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 280px;
+      max-width: 320px;
+    }
+
+    .team-title {
+      font-weight: 800;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--accent-blue);
+      padding-bottom: 6px;
+      color: var(--accent-blue);
+    }
+
+    .speaker-upload {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .speaker-upload label {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--text-subtle);
+      user-select: none;
+    }
+
+    .speaker-upload input[type="file"] {
+      background-color: var(--input-bg);
+      border: 1.8px solid var(--input-border);
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: #eee;
+      cursor: pointer;
+    }
+
+    .speaker-upload input[type="file"]::-webkit-file-upload-button {
+      background-color: var(--accent-blue);
+      border: none;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .speaker-upload input[type="file"]::-webkit-file-upload-button:hover {
+      background-color: var(--button-hover-bg);
+    }
+
+    .evaluate-button {
+      display: block;
+      margin: 40px auto 0 auto;
+      background-color: var(--accent-blue);
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.3rem;
+      padding: 15px 40px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    .evaluate-button:disabled {
+      background-color: #3b4a6a;
+      cursor: not-allowed;
+    }
+
+    .evaluate-button:hover:enabled {
+      background-color: var(--button-hover-bg);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 1rem;
+      color: var(--text-subtle);
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .upload-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .bp-grid {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: none !important;
+      }
+
+      .team-card {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <a href="index.html"><img src="https://i.ibb.co/7NzSqY66/Logo.jpg" alt="ClashJudge IO Logo" /></a>
+      <h1>ClashJudge IO</h1>
+    </div>
+    <nav>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <a href="index.html" class="back-btn">&larr; Back to Home</a>
+
+    <h2 class="section-title">Analyze Full Debates</h2>
+    <p>Upload recorded debates and receive detailed, motion-specific feedback focused on logic, clarity, and argument strength.</p>
+
+    <div class="steps">
+      <div class="step">
+        <h3>Step 1: Upload</h3>
+        <p>Drag and drop or browse to upload your debate audio file (MP3 only).</p>
+      </div>
+      <div class="step">
+        <h3>Step 2: Choose Format</h3>
+        <p>Select the debate style (BP, Policy, LD, etc.) so our AI can tailor the analysis accordingly.</p>
+      </div>
+      <div class="step">
+        <h3>Step 3: Analyze</h3>
+        <p>Our system processes speech patterns, argument logic, and motion relevance using advanced NLP models.</p>
+      </div>
+    </div>
+
+    <div class="centered-steps">
+      <div class="step">
+        <h3>Step 4: Get Feedback</h3>
+        <p>Receive a structured feedback report highlighting strengths, weaknesses, and tips for improvement.</p>
+      </div>
+      <div class="step">
+        <h3>Step 5: Learn & Explore</h3>
+        <p>Dive deeper—review common fallacies, explore counterexamples, and compare arguments to real-world models.</p>
+      </div>
+    </div>
+
+    <section class="debate-types">
+      <button data-debate="bp" id="bp-btn">British Parliamentary (4 Teams)</button>
+      <button data-debate="policy" id="policy-btn">Policy Debate (2 Teams)</button>
+      <button data-debate="ld" id="ld-btn">Lincoln-Douglas Debate (2 Speakers)</button>
+    </section>
+
+    <section class="upload-section" id="upload-section">
+      <!-- Upload inputs will appear here dynamically -->
+    </section>
+
+    <button id="evaluate-btn" class="evaluate-button" disabled>Evaluate Debate</button>
+  </main>
+
+  <footer>
+    &copy; 2025 ClashJudge IO. Student-driven. All rights reserved.
+  </footer>
+
+  <script>
+    const debateTypes = {
+      bp: {
+        teams: [
+          {
+            name: "Opening Government",
+            speakers: ["Prime Minister", "Deputy Prime Minister"],
+          },
+          {
+            name: "Opening Opposition",
+            speakers: ["Leader of Opposition", "Deputy Leader of Opposition"],
+          },
+          {
+            name: "Closing Government",
+            speakers: ["Member of Government", "Government Whip"],
+          },
+          {
+            name: "Closing Opposition",
+            speakers: ["Member of Opposition", "Opposition Whip"],
+          },
+        ],
+        layout: "bp-grid",
+      },
+      policy: {
+        teams: [
+          {
+            name: "Affirmative Team",
+            speakers: ["Speaker 1", "Speaker 2"],
+          },
+          {
+            name: "Negative Team",
+            speakers: ["Speaker 1", "Speaker 2"],
+          },
+        ],
+        layout: "bp-grid",
+      },
+      ld: {
+        teams: [
+          {
+            name: "Affirmative",
+            speakers: ["Speaker"],
+          },
+          {
+            name: "Negative",
+            speakers: ["Speaker"],
+          },
+        ],
+        layout: "bp-grid",
+      },
+    };
+
+    const debateButtons = document.querySelectorAll(".debate-types button");
+    const uploadSection = document.getElementById("upload-section");
+    const evaluateBtn = document.getElementById("evaluate-btn");
+
+    let currentDebate = null;
+    let uploadedFilesCount = 0;
+
+    function resetUploads() {
+      uploadSection.innerHTML = "";
+      evaluateBtn.disabled = true;
+      uploadedFilesCount = 0;
+    }
+
+    function checkUploadedFiles() {
+      const files = uploadSection.querySelectorAll('input[type="file"]');
+      let count = 0;
+      files.forEach(input => {
+        if (input.files.length > 0) count++;
+      });
+      uploadedFilesCount = count;
+      evaluateBtn.disabled = uploadedFilesCount < 2;
+    }
+
+    function createUploadCard(team) {
+      const card = document.createElement("div");
+      card.className = "team-card";
+
+      const teamTitle = document.createElement("div");
+      teamTitle.className = "team-title";
+      teamTitle.textContent = team.name;
+      card.appendChild(teamTitle);
+
+      team.speakers.forEach(speaker => {
+        const speakerDiv = document.createElement("div");
+        speakerDiv.className = "speaker-upload";
+
+        const label = document.createElement("label");
+        label.textContent = speaker;
+        label.htmlFor = `${team.name}-${speaker}`.replace(/\s/g, "-").toLowerCase();
+        speakerDiv.appendChild(label);
+
+        const input = document.createElement("input");
+        input.type = "file";
+        input.accept = "audio/mp3";
+        input.id = label.htmlFor;
+        input.name = label.htmlFor;
+
+        input.addEventListener("change", () => {
+          checkUploadedFiles();
+        });
+
+        speakerDiv.appendChild(input);
+        card.appendChild(speakerDiv);
+      });
+
+      return card;
+    }
+
+    function showUploadInputs(debateKey) {
+      resetUploads();
+      currentDebate = debateKey;
+
+      const debateData = debateTypes[debateKey];
+      if (!debateData) return;
+
+      uploadSection.style.display = "flex";
+      uploadSection.className = `upload-section ${debateData.layout}`;
+
+      debateData.teams.forEach(team => {
+        const card = createUploadCard(team);
+        uploadSection.appendChild(card);
+      });
+    }
+
+    debateButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        debateButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        showUploadInputs(button.dataset.debate);
+      });
+    });
+
+    evaluateBtn.addEventListener("click", () => {
+      alert(`Evaluating debate with ${uploadedFilesCount} uploaded recordings.`);
+    });
+  </script>
+</body>
+
+</html>

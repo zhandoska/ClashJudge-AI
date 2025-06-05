@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClashJudge IO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-bg: #151922;
+      --card-bg: #252321;
+      --text-light: #FDFCFA;
+      --text-subtle: #E3DAC9;
+      --accent-blue: #6495ED;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--main-bg);
+      color: var(--text-light);
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #1a1d26;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img {
+      height: 40px;
+    }
+
+    .logo-container h1 {
+      font-size: 1.8rem;
+      color: var(--text-subtle);
+      font-weight: 800;
+    }
+
+    nav a {
+      color: var(--text-light);
+      margin-left: 24px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero h2 {
+      font-size: 4.5rem;
+      color: white;
+      max-width: 900px;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .hero p {
+      font-size: 1.8rem;
+      margin-top: 30px;
+      max-width: 700px;
+      color: #FAFAFA;
+      font-weight: 400;
+    }
+
+    .section {
+      padding: 120px 40px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 80px;
+      font-weight: 800;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .feature-card {
+      background-color: var(--card-bg);
+      border-radius: 20px;
+      width: 320px;
+      padding: 40px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .feature-card:hover {
+      transform: scale(1.05);
+    }
+
+    .feature-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .feature-card p {
+      font-size: 1.2rem;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .feature-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      height: 100%;
+    }
+
+    .gradient-background {
+      background: linear-gradient(145deg, #151922 0%, #252321 100%);
+    }
+
+    footer {
+      background-color: #0D0907;
+      padding: 50px;
+      text-align: center;
+      color: #aaa;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="https://i.ibb.co/7NzSqY66/Logo.jpg" alt="Logo">
+      <h1>ClashJudge IO</h1>
+    </div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>AI-Powered Feedback for Debaters</h2>
+    <p>Student-driven. Motion-aware. Style-agnostic. Built to help you grow.</p>
+  </section>
+
+  <section id="features" class="section gradient-background">
+    <h2 class="section-title">What Can ClashJudge Do?</h2>
+    <div class="features">
+      <a href="analyze.html" class="feature-link">
+        <div class="feature-card">
+          <h3>Analyze Full Debates</h3>
+          <p>Upload recorded debates and receive in-depth, argument-focused feedback tailored to the motion.</p>
+        </div>
+      </a>
+      <div class="feature-card">
+        <h3>Evaluate Written Arguments</h3>
+        <p>Get detailed evaluations of your written arguments based on clarity, logic, and structure.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Understand Debate Format</h3>
+        <p>Supports multiple debate styles with contextual feedback for each type.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Focus on What Matters</h3>
+        <p>No scoring on style or confidence—just pure argumentation quality and logical coherence.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <h2 class="section-title">Our Story</h2>
+    <p style="max-width: 800px; margin: auto; text-align: center; font-size: 1.4rem; color: #ccc; line-height: 1.8;">
+      ClashJudge IO is a student-driven project born from the desire to provide fair and constructive feedback in debate.
+      Inspired by the elegance of Apple and powered by the precision of AI, we strive to empower every debater to grow
+      through clarity and logic.
+    </p>
+  </section>
+
+  <section id="contact" class="section gradient-background">
+    <h2 class="section-title">Get Involved</h2>
+    <p style="max-width: 600px; margin: auto; text-align: center; font-size: 1.4rem; color: #ccc; line-height: 1.8;">
+      We're always looking to collaborate, improve, and inspire. Whether you're a developer, debater, or donor, get in
+      touch and be part of our mission.
+    </p>
+    <p style="text-align: center; margin-top: 30px;">
+      <a href="mailto:contact@clashjudge.io" style="color: var(--accent-blue); text-decoration: none; font-weight: bold; font-size: 1.3rem;">contact@clashjudge.io</a>
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 ClashJudge IO. Student-driven. All rights reserved.
+  </footer>
+</body>
+
+</html>
