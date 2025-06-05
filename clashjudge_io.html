@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClashJudge IO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: #ffffff;
+      color: #111;
+      line-height: 1.6;
+    }
+    header, section, footer {
+      padding: 4rem 2rem;
+      max-width: 960px;
+      margin: auto;
+    }
+    header {
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .buttons a {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      margin: 0.5rem;
+      background: #000;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .buttons a:hover {
+      background: #333;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .three-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .three-columns div {
+      flex: 1;
+      min-width: 250px;
+      background: #f7f7f7;
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .card {
+      background: #f2f2f2;
+      padding: 2rem;
+      border-radius: 12px;
+      flex: 1;
+      min-width: 300px;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    footer a {
+      color: #666;
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI-Powered Feedback for Debaters</h1>
+    <p>Built by Students. For Students.</p>
+    <div class="buttons">
+      <a href="#get-feedback">Upload Your Debate</a>
+      <a href="#get-feedback">Submit Written Argument</a>
+    </div>
+  </header>
+
+  <section id="story">
+    <h2>Our Story</h2>
+    <p><strong>Why We Exist:</strong> We are student debaters who built the tool we wished we had.</p>
+    <p><strong>The Problem:</strong> Most feedback tools focus on style. We focus on structure, logic, and argument strength.</p>
+    <p><strong>The Story:</strong> ClashJudge IO started as a school project to bring fair, structured, AI-based feedback to the debate world. Now, it’s growing into a platform that helps students across the globe.</p>
+  </section>
+
+  <section id="how-it-works">
+    <h2>How It Works</h2>
+    <div class="three-columns">
+      <div>
+        <h3>1. Upload</h3>
+        <p>Submit your debate video/audio or a written argument draft.</p>
+      </div>
+      <div>
+        <h3>2. AI Analyzes</h3>
+        <p>We use advanced models to check your logic, structure, and strength of points.</p>
+      </div>
+      <div>
+        <h3>3. Get Feedback</h3>
+        <p>Instant, constructive, rubric-based suggestions—no style judgments.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="get-feedback">
+    <h2>Get Feedback</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Get Feedback for a Full Debate</h3>
+        <p>Upload your full debate recording and select your debate type (BP, WSDC, etc.).</p>
+      </div>
+      <div class="card">
+        <h3>Get Feedback for a Written Argument</h3>
+        <p>Paste or upload your written argument. Great for prep or training.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>ClashJudge IO was founded by high school debaters passionate about fair feedback. We’ve led Olympiads, TEDx events, and debate clubs—and we wanted to give back. This platform is student-made, student-led, and student-focused.</p>
+  </section>
+
+  <section id="support">
+    <h2>Support Us</h2>
+    <p>Right now, ClashJudge IO is free for all. In the future, we’ll introduce Pro features and one-on-one feedback sessions. If you believe in our mission, you can support us through donations or by joining the team.</p>
+  </section>
+
+  <footer>
+    <p>Built by Students | Powered by AI | ClashJudge IO</p>
+    <p>
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+      <a href="mailto:hello@clashjudge.io">Email</a>
+    </p>
+    <p>This is a student-driven educational tool. Feedback is AI-generated.</p>
+  </footer>
+</body>
+</html>
